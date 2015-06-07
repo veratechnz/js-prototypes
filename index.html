@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Prototypes</title>
+</head>
+<body>
+	<script>
+
+	//Prototypes are used to add methods and properties to an existing object. 
+
+	//Here we create a function or object called Player. 
+
+		function Player(){
+			this.name;
+			this.hitpoints = 100;
+			this.attack = function attack(opponent){
+				opponent.hitpoints -= 10;
+			alert(this.name+' just hit '+opponent.name);
+			}
+		}
+
+		//Create 2 new players with constructors. 
+		var p1 = new Player();
+		var p2 = new Player();
+
+		//name the players
+		p1.name = 'Conan';
+		p2.name = 'Hercules';
+
+		//player1 attacks player 2
+		p1.attack(p2);
+		alert(p2.name+' has '+p2.hitpoints+' hitpoints left.');
+
+		Player.prototype.heal = function heal(targetPlayer){
+			targetPlayer.hitpoints +=5;
+		};
+		
+		//Using the prototype property to add a method to the object 
+		//Make player 1 heal player 2
+		p1.heal(p2);
+		alert(p2.name+' has received healing and has '+p2.hitpoints+' hitpoints left.');
+
+		//Using the prototype property to add a property to the object. 
+		//Make player prototype energy  property
+		Player.prototype.energy = 200;
+		alert(p1.name+ ' has an Energy Level of '+ p1.energy);
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>
